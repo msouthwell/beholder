@@ -1,0 +1,36 @@
+{
+  "name": "beholder",
+  "version": "0.0.1",
+  "description": "RSS feed watcher that checks for changes in an RSS feed",
+  "main": "app.js",
+  "scripts": {
+    "predev": "eslint .",
+    "dev": "npm start",
+    "start": "node app.js",
+    "nodemon": "DEBUG=rss* nodemon --exec npm run-script dev",
+    "test": "node node_modules/mocha/bin/mocha --recursive"
+  },
+  "author": "Matt Southwell",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "^1.15.2",
+    "convict": "^2.0.0",
+    "debug": "^2.6.0",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.21",
+    "morgan": "^1.7.0",
+    "rss-parser": "^2.5.2",
+    "timequeue": "^0.2.3",
+    "validator": "^6.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.13.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "should": "^11.1.2"
+  }
+}

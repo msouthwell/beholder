@@ -4,12 +4,12 @@ const convict = require('convict');
 const validator = require('validator');
 
 convict.addFormat({
-    name: 'mongo-uri',
-    validate: (val) => {
-        if (!validator.isURL(val, {protocols: ['mongodb']})) {
-            throw new Error('must be a MongoDB URI');
-        }
+  name: 'mongo-uri',
+  validate: (val) => {
+    if (!validator.isURL(val, { protocols: ['mongodb'] })) {
+      throw new Error('must be a MongoDB URI');
     }
+  }
 });
 
 var conf = convict({
@@ -30,6 +30,12 @@ var conf = convict({
     format: 'port',
     default: 3001,
     env: 'PORT'
+  },
+  emit: {
+    doc: 'The url to post articles to',
+    format: 'url',
+    default: 'http://localhost:3002/article',
+    env: 'EMIT_URL'
   },
   db_prod: {
     uri: {
@@ -52,12 +58,11 @@ var conf = convict({
       default: 'mongodb://localhost:27017/beholder_test',
       env: 'DB_TEST_URI'
     },
-
   }
 });
 
 const env = conf.get('env');
 
-conf.validate( {strict: true} );
+conf.validate({ strict: true });
 
 module.exports = conf;

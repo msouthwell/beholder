@@ -58,6 +58,11 @@ var conf = convict({
       default: 'mongodb://localhost:27017/beholder_test',
       env: 'DB_TEST_URI'
     },
+  },
+  new_article_queue: {
+    doc: 'rabbitmq queue to emit new article ids to',
+    default: 'fresh',
+    env: 'NEW_ARTICLE_QUEUE'
   }
 });
 

@@ -7,7 +7,8 @@ const MongoClient = require('mongodb').MongoClient,
   beholder = require('./lib/beholder'),
   // fixture = require('./test/fixtures/model-feeds.json'),
   db = require('./db'),
-  express = require('express');
+  amqp = require('./amqp');
+express = require('express');
 
 const app = express();
 
@@ -68,13 +69,17 @@ db.connect('mode_production', () => {
   // db.fixtures(fixture, ()=> {
   //   ;
   // });
-  app.listen(conf.get('port'), () => {
-    log.info(
-      `rss_watch is listening at ${conf.get('ip')}:${conf.get('port')}`
-    );
-    beholder.watch(db);
+  amqp.connect(() => {
+    app.listen(conf.get('port'), () => {
+      log.info(
+        `rss_watch is listening at ${conf.get('ip')}:${conf.get('port')}`
+      );
+      beholder.watch(db);
+    });
   });
+
 });
+
 
 // MongoClient.connect(`${conf.get('db.uri')}:${conf.get('db.port')}/${conf.get('db.name')}`, (err, db) => {
 

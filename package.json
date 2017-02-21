@@ -13,11 +13,13 @@
   "author": "Matt Southwell",
   "license": "MIT",
   "dependencies": {
+    "amqplib": "^0.5.1",
     "async": "^2.1.4",
     "body-parser": "^1.15.2",
     "convict": "^2.0.0",
     "debug": "^2.6.0",
     "express": "^4.14.0",
+    "lodash": "^4.17.4",
     "mongodb": "^2.2.21",
     "morgan": "^1.7.0",
     "rss-parser": "^2.5.2",
